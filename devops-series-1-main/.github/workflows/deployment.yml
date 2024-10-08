@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
 
 env:
-  TAG: v1
-  SERVER: devopsonazure.azurecr.io
-  IMAGE: doa-ep1
+  TAG: 1
+  SERVER: demoscopy.azurecr.io
+  IMAGE: demo
 
 jobs:
   build:
@@ -28,8 +28,8 @@ jobs:
       - uses: azure/docker-login@v1
         with:
           login-server: ${{ env.SERVER }}
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
+          username: ${{ secrets.user_name }}
+          password: ${{ secrets.user_password }}
 
       - run: |
           docker build . -t ${{ env.SERVER }}/${{ env.IMAGE }}:${{ env.TAG }}
